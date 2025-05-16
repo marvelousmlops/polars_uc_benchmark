@@ -1,0 +1,48 @@
+[project]
+name = "polars-uc-benchmark"
+description = "Benchmark polars vs pyspark when data is stored in UC"
+requires-python = ">=3.11, <3.12"
+dependencies = [
+    "joblib==1.5.0",
+    "polars==1.29.0",
+    "deltalake==0.25.5",
+    "databricks-connect==15.4.8",
+    "databricks-sdk==0.53.0",
+    "pyarrow>=19.0.1, <20",
+    "python-dotenv>=1.1.0"
+]
+version = "0.0.1"
+
+[build-system]
+requires = ["setuptools>=72.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.ruff]
+line-length = 120
+lint.select = [
+    "F",    # pyflakes rules
+    "E",    # pycodestyle error rules
+    "W",    # pycodestyle warning rules
+    "B",    # flake8-bugbear rules
+    "I",    # isort rules
+    "UP",   # pyupgrade rules
+    "SIM",  # flake8-simplify rules
+    "ERA",  # eradicate rules
+    "C",    # pylint convention rules
+    "D",    # pydocstyle rules
+    "ANN"   # flake8-annotations rules
+]
+lint.ignore = [
+    "D107", # Missing docstring in `__init__`
+    "D203", # incorrect-blank-line-before-class
+    "D213", # multi-line-summary-second-line
+    "E501", # line-too-long
+    "C901", # too complex
+    "ERA001", # commented out code
+    "D100", # missing docstring
+    "ERA001" # commented out code
+]
+
+[tool.ruff.format]
+indent-style = "space"
+docstring-code-format = true
