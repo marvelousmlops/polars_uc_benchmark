@@ -1,10 +1,21 @@
 # Databricks notebook source
+# run on Databricks
+# MAGIC %pip install -r requirements.txt
 
-import os
+# COMMAND ----------
+# MAGIC %restart_python
+
+# COMMAND ----------
+from pathlib import Path
+import sys
+sys.path.append(str(Path.cwd().parent / 'src'))
+
+scale = dbutils.widgets.get("scale")
+
+# COMMAND ----------
 import time
 import polars as pl
 from datetime import date
-from deltalake import DeltaTable
 from polars_pyspark_uc.config import ProjectConfig
 from polars_pyspark_uc.helpers import set_env_vars, polars_read_uc
 
@@ -12,7 +23,7 @@ set_env_vars()
 
 config = ProjectConfig.from_yaml(config_path="../project_config.yml")
 CATALOG = config.catalog
-SCHEMA = config.schema
+SCHEMA = f"{config.schema}_scale_{scale}"
 
 # COMMAND ----------
 ts = time.time()

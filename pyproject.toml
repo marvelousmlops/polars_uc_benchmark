@@ -2,20 +2,15 @@
 name = "polars-uc-benchmark"
 description = "Benchmark polars vs pyspark when data is stored in UC"
 requires-python = ">=3.11, <3.12"
-dependencies = [
-    "joblib==1.5.0",
-    "polars==1.29.0",
-    "deltalake==0.25.5",
-    "databricks-connect==15.4.8",
-    "databricks-sdk==0.53.0",
-    "pyarrow>=19.0.1, <20",
-    "python-dotenv>=1.1.0"
-]
+dynamic = ["dependencies"]
 version = "0.0.1"
 
 [build-system]
 requires = ["setuptools>=72.0"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
 
 [tool.ruff]
 line-length = 120

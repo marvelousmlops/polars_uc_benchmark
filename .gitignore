@@ -3,3 +3,8 @@
 .vscode
 *.whl
 dist/*
+
+.databricks
+src/polars_pyspark_uc/__pycache__/
+src/polars_uc_benchmark.egg-info/
+notebooks/data/*

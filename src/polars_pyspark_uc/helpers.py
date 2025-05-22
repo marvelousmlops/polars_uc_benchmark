@@ -1,8 +1,10 @@
 import os
+
 import polars as pl
-from deltalake import DeltaTable
 from databricks.sdk import WorkspaceClient
+from deltalake import DeltaTable
 from dotenv import load_dotenv
+
 
 def set_env_vars():
     ws = WorkspaceClient()

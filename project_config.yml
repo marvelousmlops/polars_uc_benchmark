@@ -1,4 +1,5 @@
 scale: 1
 catalog: main_catalog
-schema: polars_benchmark_scale
+schema: polars_benchmark
 volume: raw
+url: https://drive.google.com/drive/u/1/folders/100twQAs6Aq4Q9mWbbjlvpW_M-Bzr-Y1B

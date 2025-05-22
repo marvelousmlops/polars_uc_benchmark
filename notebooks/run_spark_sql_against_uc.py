@@ -1,14 +1,29 @@
-# Databricks notebook source; run on Databricks! (not from local VS code)
-from polars_pyspark_uc.config import ProjectConfig
+# Databricks notebook source
+# run on Databricks
+# MAGIC %pip install -r requirements.txt
 
+# COMMAND ----------
+# MAGIC %restart_python
+
+# COMMAND ----------
+from pathlib import Path
+import sys
+sys.path.append(str(Path.cwd().parent / 'src'))
+
+scale = dbutils.widgets.get("scale")
+
+# COMMAND ----------
+from polars_pyspark_uc.config import ProjectConfig
+from databricks.connect import DatabricksSession
+import time
+
+spark = DatabricksSession.builder.getOrCreate()
 config = ProjectConfig.from_yaml(config_path="../project_config.yml")
 CATALOG = config.catalog
-SCHEMA = config.schema
+SCHEMA = f"{config.schema}_scale_{scale}"
 
 spark.sql(f"USE CATALOG {CATALOG}")
 spark.sql(f"USE {SCHEMA}")
-
-import time
 
 ts = time.time()
 
@@ -754,4 +769,4 @@ ts = time.time()
 
 # COMMAND ----------
 
-print(f"Time spend: {time.time() - ts:.2f}")  # Time spend: 86.64
+print(f"Time spend: {time.time() - ts:.2f}")
