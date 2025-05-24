@@ -10,4 +10,10 @@ targets:
     mode: development
     default: true
     workspace:
-      host: <YOUR HOST>
+      host: https://dbc-c2e8445d-159d.cloud.databricks.com
+
+  ## Optionally, there could be 'staging' or 'prod' targets here.
+  #
+  # prod:
+  #   workspace:
+  #     host: https://dbc-c2e8445d-159d.cloud.databricks.com

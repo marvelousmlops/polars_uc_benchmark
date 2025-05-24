@@ -12,6 +12,10 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 
+[project.optional-dependencies]
+dev = ["databricks-connect==15.4.5",
+       "ipykernel>=6.29.5, <7"]
+
 [tool.ruff]
 line-length = 120
 lint.select = [

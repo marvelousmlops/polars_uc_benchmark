@@ -8,3 +8,6 @@ dist/*
 src/polars_pyspark_uc/__pycache__/
 src/polars_uc_benchmark.egg-info/
 notebooks/data/*
+.DS_Store
+notebooks/.DS_Store
+uv.lock

@@ -1,15 +1,5 @@
-import os
-
 import polars as pl
-from databricks.sdk import WorkspaceClient
 from deltalake import DeltaTable
-from dotenv import load_dotenv
-
-
-def set_env_vars():
-    ws = WorkspaceClient()
-    load_dotenv() # gets DATABRICKS_ACCESS_TOKEN from .env file
-    os.environ["DATABRICKS_WORKSPACE_URL"] = ws.config.host
 
 
 def polars_read_uc(table_path: str) -> pl.DataFrame:

@@ -14,16 +14,21 @@ scale = dbutils.widgets.get("scale")
 
 # COMMAND ----------
 import time
+import os
 import polars as pl
 from datetime import date
 from polars_pyspark_uc.config import ProjectConfig
-from polars_pyspark_uc.helpers import set_env_vars, polars_read_uc
+from polars_pyspark_uc.helpers import polars_read_uc
+from databricks.sdk import WorkspaceClient
 
-set_env_vars()
 
 config = ProjectConfig.from_yaml(config_path="../project_config.yml")
 CATALOG = config.catalog
 SCHEMA = f"{config.schema}_scale_{scale}"
+
+ws = WorkspaceClient()
+os.environ["DATABRICKS_WORKSPACE_URL"] = ws.config.host
+os.environ["DATABRICKS_ACCESS_TOKEN"] = dbutils.secrets.get(scope="benchmark", key="DATABRICKS_ACCESS_TOKEN")
 
 # COMMAND ----------
 ts = time.time()
