@@ -3,8 +3,7 @@ from pydantic import BaseModel
 
 
 class ProjectConfig(BaseModel):
-    """Represent project configuration parameters loaded from YAML.
-    """
+    """Represent project configuration parameters loaded from YAML."""
 
     scale: int
     catalog: str

@@ -14,7 +14,8 @@ dependencies = {file = ["requirements.txt"]}
 
 [project.optional-dependencies]
 dev = ["databricks-connect==15.4.5",
-       "ipykernel>=6.29.5, <7"]
+       "ipykernel>=6.29.5, <7",
+       "pre-commit>=4.2.0, <5"]
 
 [tool.ruff]
 line-length = 120
@@ -33,6 +34,9 @@ lint.select = [
 ]
 lint.ignore = [
     "D107", # Missing docstring in `__init__`
+    "D103",
+    "D104",
+    "ANN201",
     "D203", # incorrect-blank-line-before-class
     "D213", # multi-line-summary-second-line
     "E501", # line-too-long
