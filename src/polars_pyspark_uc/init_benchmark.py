@@ -17,5 +17,5 @@ scale_path: str, catalog: str, schema: str, table_fn: str, scale: int):
     for i, chunk in enumerate(chunks):
         #write_mode = "overwrite" if i == 0 else "append"
         chunk.write.mode("overwrite").saveAsTable(table_path)
-    spark.sql(f"ALTER TABLE {table_path} SET TBLPROPERTIES ('delta.enableDeletionVectors' = true);")
+    spark.sql(f"ALTER TABLE {table_path} SET TBLPROPERTIES ('delta.enableDeletionVectors' = false);")
     print(f"Created table: {table_path}")

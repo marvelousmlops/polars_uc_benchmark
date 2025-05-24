@@ -1,11 +1,13 @@
 # Databricks notebook source
 # run on Databricks
-# MAGIC %pip install -r requirements.txt
+%pip install -r ../requirements.txt
 
 # COMMAND ----------
+
 # MAGIC %restart_python
 
 # COMMAND ----------
+
 from pathlib import Path
 import sys
 sys.path.append(str(Path.cwd().parent / 'src'))
@@ -13,6 +15,7 @@ sys.path.append(str(Path.cwd().parent / 'src'))
 scale = dbutils.widgets.get("scale")
 
 # COMMAND ----------
+
 from polars_pyspark_uc.config import ProjectConfig
 from databricks.connect import DatabricksSession
 import time

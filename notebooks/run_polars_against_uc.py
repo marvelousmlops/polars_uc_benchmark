@@ -1,11 +1,13 @@
 # Databricks notebook source
 # run on Databricks
-# MAGIC %pip install -r requirements.txt
+%pip install -r ../requirements.txt
 
 # COMMAND ----------
+
 # MAGIC %restart_python
 
 # COMMAND ----------
+
 from pathlib import Path
 import sys
 sys.path.append(str(Path.cwd().parent / 'src'))
@@ -13,6 +15,7 @@ sys.path.append(str(Path.cwd().parent / 'src'))
 scale = dbutils.widgets.get("scale")
 
 # COMMAND ----------
+
 import time
 import os
 import polars as pl
@@ -31,6 +34,7 @@ os.environ["DATABRICKS_WORKSPACE_URL"] = ws.config.host
 os.environ["DATABRICKS_ACCESS_TOKEN"] = dbutils.secrets.get(scope="benchmark", key="DATABRICKS_ACCESS_TOKEN")
 
 # COMMAND ----------
+
 ts = time.time()
 
 lineitem = polars_read_uc(f"{CATALOG}.{SCHEMA}.lineitem")
