@@ -56,7 +56,7 @@ delayed_create_table_no_deletion_vector = delayed(create_table_no_deletion_vecto
 
 scales = [1, 3, 10, 25]
 for scale in tqdm(scales, leave=False, desc="Scales: "):
-    schema = f"{SCHEMA_BASE}_{scale}"
+    schema = f"{SCHEMA_BASE}_scale_{scale}"
     spark.sql(f"CREATE SCHEMA IF NOT EXISTS {CATALOG}.{schema}")
 
     SCALE_PATH = f"/Volumes/{CATALOG}/{SCHEMA_BASE}/raw/tables/scale-{scale}.0"

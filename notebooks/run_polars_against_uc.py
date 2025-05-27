@@ -27,7 +27,7 @@ from databricks.sdk import WorkspaceClient
 
 config = ProjectConfig.from_yaml(config_path="../project_config.yml")
 CATALOG = config.catalog
-SCHEMA = f"{config.schema}_{scale}"
+SCHEMA = f"{config.schema}_scale_{scale}"
 
 ws = WorkspaceClient()
 os.environ["DATABRICKS_WORKSPACE_URL"] = ws.config.host
