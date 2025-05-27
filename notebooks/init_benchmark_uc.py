@@ -21,7 +21,6 @@ from databricks.connect import DatabricksSession
 from polars_pyspark_uc.config import ProjectConfig
 from polars_pyspark_uc.init_benchmark import create_table_no_deletion_vectors
 
-
 # COMMAND ----------
 
 config = ProjectConfig.from_yaml(config_path="../project_config.yml")
@@ -75,9 +74,3 @@ for scale in tqdm(scales, leave=False, desc="Scales: "):
         )
         for table_fn in tables
     )
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC
-# MAGIC DROP SCHEMA main_catalog.polars_benchmark_1 CASCADE
